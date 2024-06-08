@@ -13,4 +13,4 @@ RUN pip install -r requirements.txt
 COPY . .
 
 # Ustawienie punktu wejścia dla kontenera
-CMD ["python3", "-m", "flask.flask_endpoint"]
+CMD ["python3", "-m", "flask-app.flask_endpoint"]

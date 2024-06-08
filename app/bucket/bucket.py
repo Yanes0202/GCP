@@ -45,20 +45,25 @@ def process_file(blob):
         new_blob.upload_from_filename(local_filename)
         blob.delete()
         print(f"Invalid JSON format in file: {blob.name}")
-        return
-
-    try:
-        response = requests.post(server_url + "/add_person", json=data)
-        response.raise_for_status()
-        print(f"Person successfully added")
-        new_blob = bucket.blob("done_" + blob.name)
-        new_blob.upload_from_filename(local_filename)
-        blob.delete()
-    except requests.exceptions.RequestException as e:
-        new_blob = bucket.blob("error_" + blob.name)
-        new_blob.upload_from_filename(local_filename)
-        blob.delete()
-        print(f"Error while sending HTTP request: {e}")
+    else:
+        try:
+            response = requests.post(server_url + "/add_person", json=data)
+            response.raise_for_status()
+            print(f"Person successfully added")
+            new_blob = bucket.blob("done_" + blob.name)
+            new_blob.upload_from_filename(local_filename)
+            blob.delete()
+        except requests.exceptions.RequestException as e:
+            new_blob = bucket.blob("error_" + blob.name)
+            new_blob.upload_from_filename(local_filename)
+            blob.delete()
+            print(f"Error while sending HTTP request: {e}")
+    finally:
+        try:
+            os.remove(local_filename)
+            print(f"Deleted local file: {local_filename}")
+        except OSError as e:
+            print(f"Error deleting local file {local_filename}: {e}")
 
 
 def check_bucket():
