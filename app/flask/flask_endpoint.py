@@ -1,8 +1,11 @@
 import sqlalchemy
+import sys
+sys.path.append("../")
 from ..sql.sql_connection import engine
 from flask import Flask, request, jsonify
 from sqlalchemy.orm import sessionmaker, declarative_base
 from sqlalchemy.exc import SQLAlchemyError
+
 
 app = Flask(__name__)
 
