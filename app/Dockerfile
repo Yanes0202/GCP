@@ -12,5 +12,5 @@ RUN pip install -r requirements.txt
 # Kopiowanie reszty aplikacji do kontenera
 COPY . .
 
-# Ustawienie punktu wejścia dla kontenera
-CMD ["python3", "-m", "flask-app.flask_endpoint"]
+# Ustawienie punktu wejścia dla kontenera na run.py
+CMD ["python3", "run.py"]

@@ -1,6 +1,4 @@
 import sqlalchemy
-import sys
-sys.path.append("../")
 from sql.sql_connection import engine
 from flask import Flask, request, jsonify
 from sqlalchemy.orm import sessionmaker, declarative_base
@@ -61,7 +59,3 @@ def get_persons():
         return jsonify({'error': str(e)}), 500
     finally:
         session.close()
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
