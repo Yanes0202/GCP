@@ -3,7 +3,7 @@
 FROM python:3.8-slim-buster
 
 # Ustawienie katalogu roboczego na poziomie aplikacji
-WORKDIR /app
+WORKDIR /flask_app
 
 # Kopiowanie pliku requirements.txt i instalowanie zależności
 COPY requirements.txt requirements.txt

@@ -8,7 +8,7 @@
   <component name="PyNamespacePackagesService">
     <option name="namespacePackageFolders">
       <list>
-        <option value="$MODULE_DIR$/app" />
+        <option value="$MODULE_DIR$/flask_app" />
       </list>
     </option>
   </component>
